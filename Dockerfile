@@ -40,8 +40,6 @@
 # FROM  node:19.6.0-slim
 FROM node:16-alpine 
 
-
-
 # Create app directory
 WORKDIR /app
 
@@ -65,4 +63,7 @@ RUN npm prune --production
 
 ENV TZ Asia/Jakarta
 
-CMD npm run start:prod
+EXPOSE 8080
+
+# CMD npm run start:prod
+CMD ["node", "dist/main", "0.0.0.0"]
