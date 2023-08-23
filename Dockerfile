@@ -23,6 +23,8 @@ FROM node:16-alpine
 ENV NODE_ENV=production
 WORKDIR /app
 
+
+RUN npm install mongodb
 # Copy everything required to run the built application into the new container.
 COPY --from=build /app/package*.json ./
 COPY --from=build /app/node_modules/ ./node_modules/
