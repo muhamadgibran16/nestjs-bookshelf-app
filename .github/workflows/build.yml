@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: Login to Google Cloud
-        uses: google-github-actions/setup-gcloud@master
+        uses: google-github-actions/setup-gcloud@v1
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
           service_account_email: ${{ secrets.GCP_EMAIL }}
@@ -46,4 +46,4 @@ jobs:
               --allow-unauthenticated \
               --port 3000 \
               --set-env-vars="DB_URI=${{ secrets.DB_URI }},JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }},JWT_EXPIRES=${{ secrets.JWT_EXPIRES }}"
-              
+
