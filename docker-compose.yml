@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - 27018:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=
+      - MONGO_INITDB_ROOT_PASSWORD=
+    networks:
+      - nestjs
+
+  nestjs-bookshelf-app:
+    build: .
+    container_name: nestjs-bookshelf-app
+    restart: unless-stopped
+    ports:
+      - 8888:8080
+    env_file:
+      - .env
+    networks:
+      - nestjs
+
+networks:
+  nestjs:
+    name: nestjs
