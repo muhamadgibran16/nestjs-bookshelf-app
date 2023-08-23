@@ -31,7 +31,7 @@ COPY --from=build /app/node_modules/ ./node_modules/
 COPY --from=build /app/dist/ ./dist/
 
 # Expose the web server's port.
-EXPOSE 3000
+EXPOSE 8080
 
 # Run the application.
 CMD npm run start:prod
