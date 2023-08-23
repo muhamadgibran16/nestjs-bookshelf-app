@@ -66,4 +66,4 @@ ENV TZ Asia/Jakarta
 EXPOSE 8080
 
 # CMD npm run start:prod
-CMD ["node", "dist/main", "0.0.0.0"]
+CMD ["node", "dist/main", "0.0.0.0:8080"]
