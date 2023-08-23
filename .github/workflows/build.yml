@@ -52,4 +52,4 @@ jobs:
               --platform managed \
               --allow-unauthenticated \
               --port 3000 \
-              --set-env-vars="DB_URI=${{ secrets.DB_URI }}, JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}, JWT_EXPIRES: ${{ secrets.JWT_EXPIRES }},"
+              --set-env-vars="DB_URI=${{ secrets.DB_URI }},JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }},JWT_EXPIRES=${{ secrets.JWT_EXPIRES }}"
