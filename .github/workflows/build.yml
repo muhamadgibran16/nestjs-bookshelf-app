@@ -29,8 +29,9 @@ jobs:
     - uses: google-github-actions/setup-gcloud@v0
       with:
         version: '290.0.1'
-        service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         project_id: ${{ secrets.GCP_PROJECT_ID }}
+        service_account_email: ${{ secrets.GCP_EMAIL }}
+        service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
 
     # Build and push image to Google Container Registry
     - name: Build
