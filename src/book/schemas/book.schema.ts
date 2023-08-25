@@ -5,7 +5,7 @@ import { User } from '../../auth/schemas/user.schema';
 export enum Category {
   ADVENTURE = 'Adventure',
   CLASSICS = 'Classics',
-  CRIME = 'Crime',
+  EDUCATION = 'Education',
   FANTASY = 'Fantasy',
 }
 
@@ -17,7 +17,7 @@ export class Book {
   title: string;
 
   @Prop()
-  description: string;
+  description:   string;
 
   @Prop()
   author: string;

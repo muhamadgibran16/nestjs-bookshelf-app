@@ -45,5 +45,5 @@ jobs:
               --region asia-southeast2 \
               --allow-unauthenticated \
               --port 8080 \
-              --set-env-vars="DB_URI=${{ secrets.DB_URI }},JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }},JWT_EXPIRES=${{ secrets.JWT_EXPIRES }}"
+              --set-env-vars="DB_URI=${{ secrets.DB_URI }}, PORT=${{ secrets.PORT }},JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }},JWT_EXPIRES=${{ secrets.JWT_EXPIRES }}"
 
