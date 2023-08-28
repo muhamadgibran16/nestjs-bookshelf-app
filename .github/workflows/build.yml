@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       IMAGE_NAME: gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.APPLICATION }}
+      DB_IMAGE_NAME: gcr.io/${{ secrets.GCP_PROJECT_ID }}/mongo
       DB_URI: ${{ secrets.DB_URI }}
       JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
       JWT_EXPIRES: ${{ secrets.JWT_EXPIRES }}
@@ -31,6 +32,13 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: Build MongoDB Docker Image
+        run: |
+          docker build -t $DB_IMAGE_NAME -f Dockerfile .
+
+      - name: Push MongoDB Docker Image to Container Registry
+        run: docker push $DB_IMAGE_NAME
+
       - name: Build Docker Image
         run: docker build -t $IMAGE_NAME .
 
@@ -45,4 +53,4 @@ jobs:
               --region asia-southeast2 \
               --allow-unauthenticated \
               --port 8080 \
-              --set-env-vars="DB_URI=${{ secrets.DB_URI }} ,JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }},JWT_EXPIRES=${{ secrets.JWT_EXPIRES }}"
+              --set-env-vars="DB_URI=${{ secrets.DB_URI }} ,JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }},JWT_EXPIRES=${{ secrets.JWT_EXPIRES }},MONGO_INITDB_ROOT_USERNAME=${{ secrets.MONGO_INITDB_ROOT_USERNAME }}, MONGO_INITDB_ROOT_PASSWORD=${{ secrets.MONGO_INITDB_ROOT_PASSWORD}}"
