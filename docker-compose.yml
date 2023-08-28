@@ -7,8 +7,9 @@ services:
     ports:
       - 27018:27017
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=nestjs-bookshelf-app
-      - MONGO_INITDB_ROOT_PASSWORD=123
+      MONGO_INITDB_ROOT_USERNAME: nestjs-bookshelf-app
+      MONGO_INITDB_ROOT_PASSWORD: 123
+      MONGODB_DATABASE: "nestjs-bookshelf-app"
     networks:
       - nestjs
 
